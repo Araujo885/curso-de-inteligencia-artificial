@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso de Inteligência Artificcial, ID Global</title>
+<meta name="description" content="Aprenda a usar Inteligência Artificial nas suas tarefas do dia a dia. Curso prático da ID GLOBAL, LDA para estudantes, profissionais e empreendedores.">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<!-- Fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy: #071A34;
+  --blue-deep: #0B3D91;
+  --blue: #2F6FED;
+  --blue-light: #6FA0FF;
+  --cyan: #00D2FF;
+  --ink: #0B1220;
+  --ink-soft: #4A5568;
+  --bg: #F5F8FC;
+  --bg-alt: #EFF4FB;
+  --white: #FFFFFF;
+  --line: #E1E9F5;
+  --success: #16C787;
+  --radius: 16px;
+  --shadow-soft: 0 10px 40px rgba(11,61,145,0.10);
+  --shadow-strong: 0 20px 60px rgba(7,26,52,0.25);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter', sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.font-display{
+  font-family:'Space Grotesk', sans-serif;
+  letter-spacing:-0.01em;
+}
+.text-blue{color:var(--blue);}
+.text-cyan{color:var(--cyan);}
+.bg-navy{background:var(--navy);}
+.eyebrow{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--blue);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.eyebrow::before{
+  content:"";
+  width:24px;
+  height:2px;
+  background:var(--cyan);
+  display:inline-block;
+}
+.section-pad{padding:100px 0;}
+@media (max-width:768px){.section-pad{padding:64px 0;}}
+.container-narrow{max-width:900px;}
+
+/* ===== NAVBAR ===== */
+.navbar-custom{
+  padding:16px 0;
+  background:rgba(245,248,252,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  transition:all .3s ease;
+}
+.navbar-brand-custom{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700;
+  font-size:1.3rem;
+  color:var(--navy) !important;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  height: 38px;
+  overflow: hidden;
+}
+
+.navbar-brand-custom img{
+  height: 120px;
+  width: auto;
+  display:block;
+  flex-shrink: 0;
+}
+
+.brand-mark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg, var(--blue-deep), var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:0.95rem;
+  box-shadow:0 6px 16px rgba(47,111,237,0.35);
+}
+.nav-link-custom{
+  color:var(--ink-soft) !important;
+  font-weight:500;
+  font-size:0.94rem;
+  margin:0 6px;
+}
+.nav-link-custom:hover{color:var(--blue) !important;}
+.btn-primary-custom{
+  background:linear-gradient(135deg, var(--blue-deep), var(--blue));
+  border:none;
+  color:#fff;
+  font-weight:600;
+  padding:11px 26px;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(47,111,237,0.30);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary-custom:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(47,111,237,0.42);
+  color:#fff;
+}
+.btn-outline-custom{
+  border:1.5px solid var(--line);
+  color:var(--navy);
+  font-weight:600;
+  padding:11px 26px;
+  border-radius:10px;
+  background:transparent;
+  transition:all .2s ease;
+}
+.btn-outline-custom:hover{
+  border-color:var(--blue);
+  color:var(--blue);
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  background:radial-gradient(ellipse 120% 80% at 70% -10%, #123A78 0%, var(--navy) 55%, #050F22 100%);
+  color:#fff;
+  padding:150px 0 120px;
+  overflow:hidden;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(111,160,255,0.35);
+  padding:7px 16px;border-radius:999px;
+  font-size:0.82rem;font-weight:600;color:var(--blue-light);
+  backdrop-filter:blur(6px);
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+.hero h1{
+  font-size:clamp(2.3rem, 5vw, 3.6rem);
+  font-weight:700;
+  line-height:1.08;
+  margin:22px 0 20px;
+}
+.hero h1 .highlight{
+  background:linear-gradient(90deg, var(--cyan), var(--blue-light));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero p.lead-custom{
+  font-size:1.15rem;
+  color:#B9C6E0;
+  max-width:560px;
+  line-height:1.65;
+}
+.hero-stats{
+  display:flex;gap:34px;margin-top:40px;flex-wrap:wrap;
+}
+.hero-stat b{
+  display:block;font-family:'Space Grotesk';font-size:1.5rem;font-weight:700;color:#fff;
+}
+.hero-stat span{font-size:0.82rem;color:#8FA2C4;}
+
+/* Rede neural SVG animada */
+.hero-visual{position:relative;height:460px;}
+.neural-svg{width:100%;height:100%;position:relative;z-index:2;}
+.node-pulse{animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{
+  0%,100%{opacity:0.55; r:4;}
+  50%{opacity:1; r:6.5;}
+}
+.link-flow{
+  stroke-dasharray:6 10;
+  animation:flow 3.5s linear infinite;
+}
+@keyframes flow{ to{ stroke-dashoffset:-160; } }
+@media (prefers-reduced-motion: reduce){
+  .node-pulse, .link-flow{animation:none;}
+}
+.hero-card-float{
+  position:absolute;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:14px;
+  padding:14px 18px;
+  backdrop-filter:blur(10px);
+  font-size:0.85rem;
+  color:#DCE6F7;
+  box-shadow:var(--shadow-strong);
+}
+.hero-card-float i{color:var(--cyan);margin-right:8px;}
+.hero-card-1{top:6%; left:2%;}
+.hero-card-2{bottom:10%; right:0%;}
+
+/* ===== SOBRE ===== */
+.about-visual{
+  border-radius:20px;
+  background:linear-gradient(155deg, var(--blue-deep), var(--navy));
+  padding:44px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  min-height:380px;
+}
+.about-visual::after{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 20%, rgba(0,210,255,0.25), transparent 55%);
+}
+.about-list-item{
+  display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);
+}
+.about-list-item:last-child{border-bottom:none;}
+.icon-chip{
+  min-width:46px;height:46px;border-radius:12px;
+  background:var(--bg-alt);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue);font-size:1.15rem;
+  border:1px solid var(--line);
+}
+
+/* ===== BENEFÍCIOS ===== */
+.benefit-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:32px 26px;
+  height:100%;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.benefit-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-soft);
+  border-color:transparent;
+}
+.benefit-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg, var(--blue-deep), var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.3rem;margin-bottom:18px;
+  box-shadow:0 8px 18px rgba(47,111,237,0.3);
+}
+.benefit-card h5{font-weight:700;font-size:1.05rem;}
+.benefit-card p{color:var(--ink-soft);font-size:0.92rem;margin-bottom:0;}
+
+/* ===== PROGRAMA (timeline numerada — sequência real de módulos) ===== */
+.module-row{
+  display:flex;gap:24px;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.module-row:first-child{padding-top:0;}
+.module-num{
+  font-family:'Space Grotesk';
+  font-size:1rem;
+  font-weight:700;
+  color:var(--blue);
+  min-width:52px;
+  padding-top:2px;
+}
+.module-num span{
+  display:block;font-size:0.65rem;color:var(--ink-soft);font-weight:600;letter-spacing:0.08em;
+}
+.module-title{font-weight:700;font-size:1.05rem;margin-bottom:6px;}
+.module-desc{color:var(--ink-soft);font-size:0.92rem;margin:0;}
+
+/* ===== PARA QUEM ===== */
+.persona-card{
+  background:var(--bg-alt);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  height:100%;
+  border:1px solid transparent;
+  transition:.25s;
+}
+.persona-card:hover{background:#fff;border-color:var(--line);box-shadow:var(--shadow-soft);}
+.persona-icon{font-size:1.8rem;color:var(--blue);margin-bottom:14px;}
+
+/* ===== NOSSA EQUIPA ===== */
+.team-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  height:100%;
+  text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.team-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-soft);
+}
+.team-photo-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:var(--bg-alt);
+}
+.team-photo-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+.team-info{padding:22px 18px 26px;}
+.team-name{
+  font-family:'Space Grotesk';
+  font-weight:700;
+  font-size:1.05rem;
+  margin-bottom:4px;
+  color:var(--navy);
+}
+.team-role{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--blue);
+  background:var(--bg-alt);
+  padding:5px 14px;
+  border-radius:999px;
+}
+
+/* ===== INFO DO CURSO ===== */
+.info-panel{
+  background:linear-gradient(160deg,#0E2A54,var(--navy));
+  border-radius:24px;
+  padding:48px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.info-panel::before{
+  content:"";position:absolute;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle, rgba(0,210,255,0.18), transparent 70%);
+  top:-100px;right:-100px;
+}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;position:relative;z-index:1;}
+@media(max-width:576px){.info-grid{grid-template-columns:1fr;}}
+.info-item{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px;
+  padding:18px 20px;
+}
+.info-item i{color:var(--cyan);font-size:1.1rem;margin-bottom:8px;display:block;}
+.info-item .label{font-size:0.76rem;color:#9AAFD4;text-transform:uppercase;letter-spacing:0.06em;}
+.info-item .value{font-weight:700;font-family:'Space Grotesk';font-size:1.02rem;}
+
+/* ===== PREÇO / PAGAMENTO ===== */
+.price-card{
+  background:#fff;
+  border-radius:24px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  overflow:hidden;
+}
+.price-header{
+  background:linear-gradient(135deg, var(--blue-deep), var(--blue));
+  color:#fff;padding:36px 40px;
+  position:relative;
+}
+.price-amount{font-family:'Space Grotesk';font-size:3rem;font-weight:700;line-height:1;}
+.price-amount sup{font-size:1.1rem;font-weight:600;top:-1.4em;}
+.price-old{text-decoration:line-through;opacity:0.6;font-size:1.1rem;}
+.payment-method{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px dashed var(--line);
+}
+.payment-method:last-child{border-bottom:none;}
+.payment-method .pm-icon{
+  width:42px;height:42px;border-radius:10px;background:var(--bg-alt);
+  display:flex;align-items:center;justify-content:center;color:var(--blue);
+}
+.qr-box{
+  border:1.5px dashed var(--line);
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  background:var(--bg-alt);
+}
+
+/* ===== FORMULÁRIO ===== */
+.form-panel{
+  background:#fff;
+  border-radius:24px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  padding:44px;
+}
+.form-control-custom{
+  border:1.5px solid var(--line);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:0.95rem;
+  background:var(--bg-alt);
+  transition:.2s;
+}
+.form-control-custom:focus{
+  border-color:var(--blue);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(47,111,237,0.12);
+}
+.form-label-custom{font-weight:600;font-size:0.88rem;margin-bottom:6px;color:var(--navy);}
+
+/* ===== DEPOIMENTOS ===== */
+.testimonial-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px;
+  height:100%;
+}
+.testimonial-card .stars{color:#F5A623;font-size:0.85rem;margin-bottom:14px;}
+.testimonial-card p.quote{font-size:0.94rem;color:var(--ink-soft);line-height:1.6;}
+.avatar-circle{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg, var(--blue-deep), var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-family:'Space Grotesk';
+}
+
+/* ===== FAQ ===== */
+.accordion-custom .accordion-item{
+  border:1px solid var(--line);
+  border-radius:14px !important;
+  margin-bottom:14px;
+  overflow:hidden;
+}
+.accordion-custom .accordion-button{
+  font-weight:600;
+  font-family:'Space Grotesk';
+  font-size:1rem;
+  color:var(--navy);
+  background:#fff;
+  padding:20px 24px;
+}
+.accordion-custom .accordion-button:not(.collapsed){
+  color:var(--blue);
+  background:var(--bg-alt);
+  box-shadow:none;
+}
+.accordion-custom .accordion-button:focus{box-shadow:none;border-color:var(--line);}
+.accordion-custom .accordion-body{color:var(--ink-soft);font-size:0.93rem;padding:0 24px 20px;}
+
+/* ===== CTA FINAL ===== */
+.cta-final{
+  background:linear-gradient(120deg, var(--blue-deep) 0%, var(--navy) 100%);
+  border-radius:28px;
+  padding:64px 40px;
+  color:#fff;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-final::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 30%, rgba(0,210,255,0.2), transparent 55%);
+}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy);color:#B9C6E0;padding:64px 0 24px;}
+footer h6{color:#fff;font-family:'Space Grotesk';font-weight:700;margin-bottom:18px;}
+footer a{color:#B9C6E0;text-decoration:none;font-size:0.92rem;}
+footer a:hover{color:var(--cyan);}
+.footer-social{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;transition:.2s;
+}
+.footer-social:hover{background:var(--blue);}
+.footer-divider{border-color:rgba(255,255,255,0.1);}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{
+  position:fixed;bottom:26px;right:26px;
+  width:60px;height:60px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.7rem;
+  box-shadow:0 10px 28px rgba(37,211,102,0.45);
+  z-index:999;
+  animation:wa-bounce 2.6s ease-in-out infinite;
+  text-decoration:none;
+}
+.whatsapp-float:hover{color:#fff;transform:scale(1.06);}
+@keyframes wa-bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+@media (prefers-reduced-motion: reduce){.whatsapp-float{animation:none;}}
+
+/* ===== ANIMAÇÕES SCROLL ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+/* ===== BOTÃO VOLTAR AO TOPO ===== */
+.back-to-top{
+  position:fixed;bottom:26px;left:26px;
+  width:46px;height:46px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue);box-shadow:var(--shadow-soft);
+  opacity:0;visibility:hidden;transition:.3s;z-index:998;
+}
+.back-to-top.show{opacity:1;visibility:visible;}
+
+.section-label-lg{font-size:clamp(1.7rem,3.2vw,2.4rem); font-weight:700;}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container">
+ <a class="navbar-brand navbar-brand-custom" href="#topo">
+      <img src="id global logo azul.png" alt="ID GLOBAL, LDA">
+  </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#programa">Programa</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#equipa">Equipa</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#preco">Investimento</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#faq">FAQ</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <a href="#inscricao" class="btn btn-primary-custom w-100">Garantir Vaga</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="topo">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <span class="hero-badge"><span class="dot"></span> Inscrições Abertas · Vagas Limitadas</span>
+        <h1>Domine a <span class="highlight">Inteligência Artificial</span> no seu dia a dia</h1>
+        <p class="lead-custom">Um curso prático da ID GLOBAL, LDA que ensina a usar IA para produzir mais, organizar melhor a sua rotina e tomar decisões mais inteligentes — na vida pessoal e no trabalho.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#inscricao" class="btn btn-primary-custom btn-lg">Inscreva-se Agora <i class="bi bi-arrow-right ms-1"></i></a>
+          <a href="#sobre" class="btn btn-outline-custom btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.25);">Conhecer o Curso</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>7</b><span>Módulos práticos</span></div>
+          <div class="hero-stat"><b>100%</b><span>Aplicável ao dia a dia</span></div>
+          <div class="hero-stat"><b>+15</b><span>Ferramentas de IA</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="hero-card-float hero-card-1"><i class="bi bi-lightning-charge-fill"></i>Produtividade +3x</div>
+          <div class="hero-card-float hero-card-2"><i class="bi bi-shield-check"></i>Uso seguro e responsável</div>
+          <svg class="neural-svg" viewBox="0 0 480 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2F6FED" stroke-opacity="0.45" stroke-width="1.4">
+              <line class="link-flow" x1="90" y1="90" x2="240" y2="60" stroke="#00D2FF"/>
+              <line class="link-flow" x1="240" y1="60" x2="380" y2="120" stroke="#00D2FF"/>
+              <line x1="90" y1="90" x2="130" y2="230"/>
+              <line x1="240" y1="60" x2="130" y2="230"/>
+              <line class="link-flow" x1="240" y1="60" x2="260" y2="240"/>
+              <line x1="380" y1="120" x2="260" y2="240"/>
+              <line x1="130" y1="230" x2="260" y2="240"/>
+              <line class="link-flow" x1="130" y1="230" x2="100" y2="370"/>
+              <line x1="260" y1="240" x2="240" y2="380"/>
+              <line x1="260" y1="240" x2="380" y2="330"/>
+              <line class="link-flow" x1="380" y1="120" x2="380" y2="330"/>
+              <line x1="100" y1="370" x2="240" y2="380"/>
+              <line x1="240" y1="380" x2="380" y2="330"/>
+            </g>
+            <g fill="#6FA0FF">
+              <circle class="node-pulse" cx="90" cy="90" r="5"/>
+              <circle class="node-pulse" cx="240" cy="60" r="5" style="animation-delay:.3s"/>
+              <circle class="node-pulse" cx="380" cy="120" r="5" style="animation-delay:.6s"/>
+              <circle class="node-pulse" cx="130" cy="230" r="6" fill="#00D2FF" style="animation-delay:.2s"/>
+              <circle class="node-pulse" cx="260" cy="240" r="6" fill="#00D2FF" style="animation-delay:.5s"/>
+              <circle class="node-pulse" cx="100" cy="370" r="5" style="animation-delay:.8s"/>
+              <circle class="node-pulse" cx="240" cy="380" r="5" style="animation-delay:.4s"/>
+              <circle class="node-pulse" cx="380" cy="330" r="5" style="animation-delay:.7s"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SOBRE O CURSO ================= -->
+<section class="section-pad" id="sobre">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5 reveal">
+        <div class="about-visual">
+          <i class="bi bi-cpu" style="font-size:2.2rem;color:var(--cyan);"></i>
+          <h3 class="mt-4 mb-3" style="font-weight:700;">Aprender fazendo, desde o primeiro dia</h3>
+          <p style="color:#C9D6EE;font-size:0.95rem;line-height:1.7;">Cada aula parte de uma tarefa real — um e-mail, uma planilha, uma apresentação, uma decisão — e mostra como a IA a resolve mais depressa e melhor.</p>
+          <div class="d-flex align-items-center gap-2 mt-4" style="color:#fff;">
+            <i class="bi bi-patch-check-fill text-cyan"></i>
+            <span style="font-size:0.9rem;">Metodologia 100% prática e orientada a resultados</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7 reveal">
+        <span class="eyebrow">Sobre o Curso</span>
+        <h2 class="section-label-lg mt-3 mb-4">O que é e o que vai aprender</h2>
+        <p style="color:var(--ink-soft);font-size:1.02rem;line-height:1.75;">Este é um curso de Inteligência Artificial aplicada — não teórica. Foi desenhado pela ID GLOBAL, LDA para que qualquer pessoa, mesmo sem experiência técnica, saia a usar IA com confiança nas tarefas de todos os dias.</p>
+
+        <div class="mt-3">
+          <div class="about-list-item">
+            <div class="icon-chip"><i class="bi bi-clipboard-data"></i></div>
+            <div>
+              <h6 class="fw-bold mb-1">Produtividade e organização</h6>
+              <p class="mb-0 text-secondary" style="font-size:0.92rem;">Automatize e-mails, agendas, relatórios e tarefas repetitivas com ferramentas de IA simples.</p>
+            </div>
+          </div>
+          <div class="about-list-item">
+            <div class="icon-chip"><i class="bi bi-chat-dots"></i></div>
+            <div>
+              <h6 class="fw-bold mb-1">Comunicação e estudo</h6>
+              <p class="mb-0 text-secondary" style="font-size:0.92rem;">Escreva melhor, resuma documentos e acelere pesquisas e trabalhos académicos.</p>
+            </div>
+          </div>
+          <div class="about-list-item">
+            <div class="icon-chip"><i class="bi bi-graph-up-arrow"></i></div>
+            <div>
+              <h6 class="fw-bold mb-1">Negócios e tomada de decisão</h6>
+              <p class="mb-0 text-secondary" style="font-size:0.92rem;">Use IA para analisar dados, apoiar decisões e criar soluções para o seu negócio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFÍCIOS ================= -->
+<section class="section-pad bg-white" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="text-center container-narrow mx-auto reveal">
+      <span class="eyebrow d-inline-flex mx-auto">Benefícios</span>
+      <h2 class="section-label-lg mt-3 mb-3">Resultados que vai sentir logo nas primeiras semanas</h2>
+      <p style="color:var(--ink-soft);">Tudo o que este curso entrega em benefícios reais e práticos para a sua rotina.</p>
+    </div>
+    <div class="row g-4 mt-3">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-speedometer2"></i></div>
+          <h5>Aumentar a produtividade</h5>
+          <p>Realize em minutos tarefas que hoje levam horas, com o apoio certo da IA.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-arrow-repeat"></i></div>
+          <h5>Automatizar tarefas repetitivas</h5>
+          <p>Delegue processos manuais e repetitivos e liberte tempo para o que importa.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-kanban"></i></div>
+          <h5>Melhorar a organização</h5>
+          <p>Estruture ideias, projetos e prioridades com ferramentas inteligentes.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-mortarboard"></i></div>
+          <h5>Apoiar estudos e trabalhos</h5>
+          <p>Pesquise, resuma e produza conteúdos académicos com muito mais rapidez.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-diagram-3"></i></div>
+          <h5>Comunicação e decisão</h5>
+          <p>Melhore a forma como comunica e como analisa opções antes de decidir.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+          <h5>Usar IA com segurança</h5>
+          <p>Aprenda boas práticas para usar Inteligência Artificial de forma ética e segura.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMA ================= -->
+<section class="section-pad" id="programa">
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-4 reveal">
+        <span class="eyebrow">Conteúdo Programático</span>
+        <h2 class="section-label-lg mt-3 mb-3">Um percurso pensado passo a passo</h2>
+        <p style="color:var(--ink-soft);">Os módulos seguem uma progressão lógica: começa nos fundamentos e termina a aplicar IA em contextos reais de trabalho e negócio.</p>
+        <a href="#inscricao" class="btn btn-primary-custom mt-2">Quero Todos os Módulos</a>
+      </div>
+      <div class="col-lg-8 reveal">
+        <div class="module-row">
+          <div class="module-num">01<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">Introdução à Inteligência Artificial</div>
+            <p class="module-desc">Conceitos essenciais, o que é IA e como ela já está presente no seu dia a dia.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">02<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">Ferramentas de IA mais úteis</div>
+            <p class="module-desc">Panorama prático das principais plataformas e assistentes de IA disponíveis hoje.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">03<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">IA para produtividade pessoal</div>
+            <p class="module-desc">Organize agenda, e-mails e tarefas do dia a dia com automações simples.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">04<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">IA para estudos e pesquisa</div>
+            <p class="module-desc">Pesquise, resuma e estruture trabalhos académicos com mais eficiência.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">05<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">IA para trabalho e negócios</div>
+            <p class="module-desc">Aplique IA em relatórios, apresentações, marketing e apoio à decisão.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">06<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">IA para automação de tarefas</div>
+            <p class="module-desc">Crie fluxos automáticos que poupam tempo em processos repetitivos.</p>
+          </div>
+        </div>
+        <div class="module-row">
+          <div class="module-num">07<span>MÓDULO</span></div>
+          <div>
+            <div class="module-title">Boas práticas e uso responsável</div>
+            <p class="module-desc">Ética, privacidade e segurança no uso diário de ferramentas de IA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARA QUEM ================= -->
+<section class="section-pad" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="text-center container-narrow mx-auto reveal">
+      <span class="eyebrow d-inline-flex mx-auto">Para Quem é Este Curso</span>
+      <h2 class="section-label-lg mt-3 mb-3">Feito para quem quer usar IA na prática</h2>
+      <p style="color:var(--ink-soft);">Não é preciso experiência técnica. O curso foi desenhado para diferentes perfis.</p>
+    </div>
+    <div class="row g-4 mt-3">
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="persona-card">
+          <i class="bi bi-mortarboard-fill persona-icon"></i>
+          <h6 class="fw-bold">Estudantes</h6>
+          <p class="text-secondary mb-0" style="font-size:0.9rem;">Para estudar, pesquisar e produzir trabalhos com mais eficiência.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="persona-card">
+          <i class="bi bi-briefcase-fill persona-icon"></i>
+          <h6 class="fw-bold">Profissionais</h6>
+          <p class="text-secondary mb-0" style="font-size:0.9rem;">Para ganhar produtividade e destacar-se no ambiente de trabalho.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="persona-card">
+          <i class="bi bi-rocket-takeoff-fill persona-icon"></i>
+          <h6 class="fw-bold">Empreendedores</h6>
+          <p class="text-secondary mb-0" style="font-size:0.9rem;">Para aplicar IA no negócio, marketing e apoio à decisão.</p>
+        </div>
+      </div> 
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="persona-card">
+          <i class="bi bi-people-fill persona-icon"></i>
+          <h6 class="fw-bold">Funcionários administrativos</h6>
+          <p class="text-secondary mb-0" style="font-size:0.9rem;">Para automatizar tarefas rotineiras e organizar processos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSSA EQUIPA ================= -->
+<section class="section-pad" id="equipa">
+  <div class="container">
+    <div class="text-center container-narrow mx-auto reveal">
+      <span class="eyebrow d-inline-flex mx-auto">Nossa Equipa</span>
+      <h2 class="section-label-lg mt-3 mb-3">As pessoas por trás da ID GLOBAL, LDA</h2>
+      <p style="color:var(--ink-soft);">Uma equipa multidisciplinar dedicada a levar a Inteligência Artificial ao seu dia a dia.</p>
+    </div>
+    <div class="row g-4 mt-3 justify-content-center">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="idaltino Mussili.png" alt="Idaltino Mussili — Diretor de Marketing">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Idaltino Mussili</div>
+            <span class="team-role"><i class="bi bi-pci-card-network"></i>Arquiteto de Soluções de IA</span>
+          </div>
+        </div>
+      </div>
+       <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="Joao Alexandre.png" alt="João Alexandre — Designer Gráfico">
+          </div>
+          <div class="team-info">
+            <div class="team-name">João Alexandre</div>
+            <span class="team-role"><i class="bi bi-book"></i>Instrutor Principal em IA</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="Araujo Chiwissa.png" alt="Araújo Chiwissa — Programador">
+          </div>
+          <div class="team-info">
+            <div class="team-name">Araújo Chiwissa</div>
+            <span class="team-role"><i class="bi bi-bar-chart"></i> Cientista de Dados Junior</span>
+          </div>
+        </div>
+      </div>
+     
+      
+    </div>
+  </div>
+</section>
+
+<!-- ================= INFORMAÇÕES DO CURSO ================= -->
+<section class="section-pad" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5 reveal">
+        <span class="eyebrow">Informações do Curso</span>
+        <h2 class="section-label-lg mt-3 mb-3">Tudo o que precisa de saber antes de se inscrever</h2>
+        <p style="color:var(--ink-soft);">Formato flexível, turmas reduzidas e acompanhamento próximo do início ao fim.</p>
+        <a href="#inscricao" class="btn btn-primary-custom mt-2">Reservar a Minha Vaga</a>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="info-panel">
+          <div class="info-grid">
+            <div class="info-item">
+              <i class="bi bi-journal-bookmark"></i>
+              <div class="label">Curso</div>
+              <div class="value">IA no dia a dia</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-calendar-event"></i>
+              <div class="label">Início</div>
+              <div class="value">A definir consoante turma</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-hourglass-split"></i>
+              <div class="label">Duração</div>
+              <div class="value">4 semanas</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-clock"></i>
+              <div class="label">Horários</div>
+              <div class="value">Manhã: das 09h às 11h</div>
+              <div class="value">Tarde: das 14h às 16h</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-laptop"></i>
+              <div class="label">Modalidade</div>
+              <div class="value">Presencial</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-geo-alt"></i>
+              <div class="label">Local</div>
+              <div class="value">Benguela-Lobito</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-people"></i>
+              <div class="label">Vagas</div>
+              <div class="value">Turma reduzida e limitada</div>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-award"></i>
+              <div class="label">Certificado</div>
+              <div class="value">Certificado ID GLOBAL, LDA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PREÇO E PAGAMENTO ================= -->
+<section class="section-pad" id="preco">
+  <div class="container">
+    <div class="text-center container-narrow mx-auto reveal">
+      <span class="eyebrow d-inline-flex mx-auto">Investimento</span>
+      <h2 class="section-label-lg mt-3 mb-3">Um investimento acessível no seu futuro</h2>
+      <p style="color:var(--ink-soft);">Reserve já a sua vaga — o valor inclui todos os módulos, materiais e certificado.</p>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-9">
+        <div class="price-card">
+          <div class="row g-0">
+            <div class="col-md-5">
+              <div class="price-header h-100 d-flex flex-column justify-content-center">
+                <span style="font-size:0.85rem;opacity:0.85;">Curso completo</span>
+                <div class="d-flex align-items-baseline gap-2 mt-2">
+                  <span class="price-amount">45.000 <sup>kz</sup></span>
+                </div>
+                <span class="price-old mt-1">65.000 kz</span>
+                <ul class="list-unstyled mt-4 mb-0" style="font-size:0.9rem;">
+                  <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>Acesso a todos os 7 módulos</li>
+                  <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>Materiais e exercícios práticos</li>
+                  <li class="mb-2"><i class="bi bi-check2-circle me-2"></i>Certificado de conclusão</li>
+                  <li><i class="bi bi-check2-circle me-2"></i>Suporte durante o curso</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="p-4 p-md-5">
+                <h5 class="fw-bold mb-4">Formas de pagamento</h5>
+                <div class="payment-method">
+                  <div class="pm-icon"><i class="bi bi-credit-card"></i></div>
+                  <div><b>Airtm</b><br><span class="text-secondary" style="font-size:0.88rem;">email: zedmussili@gmail.com</span></div>
+                </div>
+                <div class="payment-method">
+                  <div class="pm-icon"><i class="bi bi-credit-card"></i></div>
+                  <div><b>RedotPay</b><br><span class="text-secondary" style="font-size:0.88rem;">ID: 1996287925</span></div>
+                </div>
+                
+                <div class="payment-method">
+                  <div class="pm-icon"><i class="bi bi-credit-card"></i></div>
+                  <div><b>IBAN</b><br><span class="text-secondary" style="font-size:0.88rem;">AO06 0006 0000 5654 6587 5345 1</span></div>
+                </div>
+                  <div>
+                    <br><span class="text-secondary" style="font-size:0.88rem;">Envie o comprovativo no nosso WhatsApp: 927 285 847</span>
+                    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMULÁRIO DE INSCRIÇÃO ================= -->
+<section class="section-pad" id="inscricao" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center reveal">
+          <span class="eyebrow d-inline-flex mx-auto">Inscrição</span>
+          <h2 class="section-label-lg mt-3 mb-3">Garanta já a sua vaga</h2>
+          <p style="color:var(--ink-soft);">Preencha o formulário abaixo — a nossa equipa entrará em contacto para confirmar a sua inscrição.</p>
+        </div>
+
+        <div class="form-panel mt-4 reveal">
+          <form id="formInscricao" n9ovalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label-custom">Nome completo</label>
+                <input type="text" name="nome" class="form-control form-control-custom" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Telefone</label>
+                <input type="tel" name="telefone" class="form-control form-control-custom" placeholder=" 9XX XXX XXX" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label-custom">Gênero</label>
+                <select name="genero" class="form-select form-control-custom">
+                  <option>Femenino</option>
+                  <option>Masculino</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">E-mail</label>
+                <input type="email" name="email" class="form-control form-control-custom" placeholder="oseuemail@exemplo.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Ocupação</label>
+                <input type="text" name="ocupacao" class="form-control form-control-custom" placeholder="Ex: Estudante, Trabalhador, Nenhuma...">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-custom">Instituição/Empresa</label>
+                <input type="text" name="instituicao" class="form-control form-control-custom">
+              </div>
+              <div class="col-6">
+                <label class="form-label-custom">Interesse no curso</label>
+                <select name="interesse" class="form-select form-control-custom">
+                  <option>Produtividade pessoal</option>
+                  <option>Estudos e pesquisa</option>
+                  <option>Trabalho e negócios</option>
+                  <option>Automação de tarefas</option>
+                  <option>Outros</option>
+                </select>
+              </div>
+               <div class="col-6">
+                <label class="form-label-custom">Domínio de Informática</label>
+                <select name="dominioDeInformatica" class="form-select form-control-custom">
+                  <option>Não tenho</option>
+                  <option>Tenho, mas básico</option>
+                  <option>Tenho Avançado</option>
+
+                </select>
+              </div>  
+              
+              <div class="col-12">
+                <label class="form-label-custom">Morada</label>
+                <textarea name="endereco" class="form-control form-control-custom" rows="3"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary-custom btn-lg w-100 mt-4" id="btnSubmitForm">
+              <i class="bi bi-send-check me-2"></i>Confirmar Inscrição
+            </button> 
+            <p class="text-center mt-3 mb-0" style="font-size:0.8rem;color:var(--ink-soft);">
+              <i class="bi bi-shield-lock me-1"></i>Os seus dados estão seguros e serão usados apenas para contacto sobre o curso.
+            </p>
+          </form>
+        </div>
+
+        <div class="form-panel mt-4 reveal text-center" id="formSuccess" style="display:none;">
+          <i class="bi bi-check-circle-fill" style="font-size:3rem;color:var(--success);"></i>
+          <h5 class="fw-bold mt-3 mb-2">Inscrição recebida!</h5>
+          <p class="text-secondary">Obrigado pelo seu interesse. A nossa equipa vai contactá-lo(a) em breve.</p>
+          <a href="#" class="btn btn-primary-custom mt-2 wa-link"><i class="bi bi-whatsapp me-2"></i>Falar Agora no WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROVA SOCIAL ================= -->
+<section class="section-pad" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="text-center container-narrow mx-auto reveal">
+      <span class="eyebrow d-inline-flex mx-auto">Confiança</span>
+      <h2 class="section-label-lg mt-3 mb-3">Quem já aprendeu, recomenda</h2>
+      <p style="color:var(--ink-soft);">A ID GLOBAL, LDA acredita que tecnologia só faz sentido quando transforma o dia a dia das pessoas. É essa a missão deste curso.</p>
+    </div>
+
+    <div class="row g-4 mt-3">
+      <div class="col-md-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="quote">"Comecei a usar IA para organizar o meu trabalho no primeiro dia. Poupo horas por semana."</p>
+          <div class="d-flex align-items-center gap-3 mt-3">
+            <div class="avatar-circle">MA</div>
+            <div><b class="d-block" style="font-size:0.92rem;">Mariana A.</b><span class="text-secondary" style="font-size:0.82rem;">Gestora Administrativa</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="quote">"Como estudante, os módulos de pesquisa e estudo mudaram a forma como faço os meus trabalhos."</p>
+          <div class="d-flex align-items-center gap-3 mt-3">
+            <div class="avatar-circle">JP</div>
+            <div><b class="d-block" style="font-size:0.92rem;">João P.</b><span class="text-secondary" style="font-size:0.82rem;">Estudante Universitário</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="quote">"Apliquei o módulo de negócios logo na primeira semana e já vejo resultados na minha empresa."</p>
+          <div class="d-flex align-items-center gap-3 mt-3">
+            <div class="avatar-circle">CS</div>
+            <div><b class="d-block" style="font-size:0.92rem;">Carla S.</b><span class="text-secondary" style="font-size:0.82rem;">Empreendedora</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section-pad" id="faq">
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-4 reveal">
+        <span class="eyebrow">Dúvidas Frequentes</span>
+        <h2 class="section-label-lg mt-3 mb-3">Ainda tem perguntas?</h2>
+        <p style="color:var(--ink-soft);">Reunimos aqui as respostas às dúvidas mais comuns. Se precisar de mais alguma coisa, fale connosco no WhatsApp.</p>
+        <a href="#" class="btn btn-outline-custom wa-link"><i class="bi bi-whatsapp me-2"></i>Tirar Dúvida no WhatsApp</a>
+      </div>
+      <div class="col-lg-8 reveal">
+        <div class="accordion accordion-custom" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">O curso é para iniciantes?</button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Sim. O curso foi desenhado para quem nunca usou Inteligência Artificial, com explicações simples e exemplos práticos do dia a dia.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Preciso ter conhecimento prévio em IA?</button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Não é necessário nenhum conhecimento técnico. Basta saber usar um computador ou smartphone e ter vontade de aprender.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Como funciona o pagamento?</button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Pode pagar por transferência, referência bancária ou Multicaixa. Depois de pagar, envie o comprovativo pelo WhatsApp para confirmar a sua vaga.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Receberei certificado?</button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Sim. Todos os participantes que concluírem o curso recebem um certificado emitido pela ID GLOBAL, LDA.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">As vagas são limitadas?</button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Sim, mantemos turmas reduzidas para garantir um acompanhamento próximo e de qualidade a cada participante.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Como faço a inscrição?</button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Basta preencher o formulário de inscrição nesta página ou entrar em contacto diretamente pelo WhatsApp. A nossa equipa confirma tudo consigo.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="section-pad">
+  <div class="container">
+    <div class="cta-final reveal">
+      <h2 style="font-weight:700;font-size:clamp(1.6rem,3.5vw,2.4rem);position:relative;z-index:1;">Está pronto para dominar a IA no seu dia a dia?</h2>
+      <p style="color:#C9D6EE;max-width:520px;margin:14px auto 28px;position:relative;z-index:1;">As vagas são limitadas. Garanta já o seu lugar na próxima turma da ID GLOBAL, LDA.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3" style="position:relative;z-index:1;">
+        <a href="#inscricao" class="btn btn-primary-custom btn-lg">Garantir Vaga Agora</a>
+        <a href="#" class="btn btn-outline-custom btn-lg wa-link" style="color:#fff;border-color:rgba(255,255,255,0.3);"><i class="bi bi-whatsapp me-2"></i>Falar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="navbar-brand-custom mb-3" style="color:#fff !important;">
+          <span class="brand-mark">ID</span> GLOBAL, LDA
+        </div>
+        <p style="font-size:0.9rem;color:#8FA2C4;">Formação em Inteligência Artificial aplicada ao dia a dia — para estudantes, profissionais e empresas.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="footer-social wa-link"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6>Navegação</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2">
+          <li><a href="#sobre">Sobre o curso</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#equipa">Nossa equipa</a></li>
+          <li><a href="#preco">Investimento</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-6">
+        <h6>Contactos</h6>
+        <ul class="list-unstyled d-flex flex-column gap-2">
+          <li><i class="bi bi-envelope me-2"></i>idglobal@outlook.com</li>
+          <li><i class="bi bi-whatsapp me-2"></i>+244 927 285 847</li>
+          <li><i class="bi bi-geo-alt me-2"></i>Lobito, Benguela, Angola</li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6>Garanta a sua vaga</h6>
+        <p style="font-size:0.88rem;color:#8FA2C4;">Vagas limitadas por turma.</p>
+        <a href="#inscricao" class="btn btn-primary-custom btn-sm">Inscrever-me</a>
+      </div>
+    </div>
+    <hr class="footer-divider my-4">
+    <div class="d-flex flex-wrap justify-content-between gap-2" style="font-size:0.82rem;color:#7488AC;">
+      <span>&copy; 2026 ID GLOBAL, LDA. Todos os direitos reservados.</span>
+      <span>Curso de Inteligência Artificial Aplicada</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP FLUTUANTE ================= -->
+<a href="#" class="whatsapp-float wa-link" aria-label="Contactar via WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- ================= BOTÃO VOLTAR AO TOPO ================= -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo"><i class="bi bi-arrow-up"></i></button>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.12.4/sweetalert2.all.min.js"></script>
+
+<script>
+  // ===== CONFIGURAÇÃO WHATSAPP =====
+  // Altere o número abaixo (formato internacional, sem + nem espaços) e a mensagem padrão.
+  const WHATSAPP_NUMBER = "244927285847";
+  const WHATSAPP_MESSAGE = "Olá! Tenho interesse no curso de Inteligência Artificial da ID GLOBAL, LDA.";
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  document.querySelectorAll(".wa-link").forEach(el => el.setAttribute("href", waUrl));
+
+  // ===== NAVBAR AO SCROLL =====
+  const nav = document.querySelector(".navbar-custom");
+  window.addEventListener("scroll", () => {
+    nav.style.boxShadow = window.scrollY > 20 ? "0 4px 20px rgba(11,61,145,0.08)" : "none";
+  });
+
+  // ===== BOTÃO VOLTAR AO TOPO =====
+  const backBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backBtn.classList.toggle("show", window.scrollY > 600);
+  });
+  backBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+  // ===== ANIMAÇÕES DE ENTRADA (SCROLL REVEAL) =====
+  const revealEls = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== FORMULÁRIO DE INSCRIÇÃO → GOOGLE SHEETS =====
+  // Substitua o URL abaixo pelo URL do seu Apps Script (Implementar > Nova implementação > App da Web).
+  const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyNx7t3vPq44naS0nClNsvfqxBZWKQn_YgJGYytB9mdrw4-xbjemoQpvArHnt_UdBwu/exec";
+
+  const form = document.getElementById("formInscricao");
+  const formSuccess = document.getElementById("formSuccess");
+  const btnSubmit = document.getElementById("btnSubmitForm");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    // Estado de "a enviar..."
+    const originalBtnHtml = btnSubmit.innerHTML;
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>A enviar...';
+
+    const formData = new FormData(form);
+
+    // 'no-cors' é necessário porque o Apps Script não devolve cabeçalhos CORS;
+    // a resposta não pode ser lida, mas os dados chegam e são gravados na folha.
+    fetch(GOOGLE_SHEETS_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(() => {
+      form.reset();
+      Swal.fire({
+        icon: "success",
+        title: "Inscrição feita com sucesso",
+        html: "Obrigado pelo seu interesse. A nossa equipa vai contactá-lo(a) em breve.<br><br>Envie o seu comprovativo do pagamento no nosso WhatsApp.",
+        confirmButtonText: '<i class="bi bi-whatsapp me-2"></i>Falar agora no WhatsApp',
+        confirmButtonColor: "#25D366",
+        showCancelButton: true,
+        cancelButtonText: "Fechar",
+        cancelButtonColor: "#2F6FED",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.open(waUrl, "_blank");
+        }
+      });
+    })
+    .catch((err) => {
+      console.error("Erro ao enviar inscrição:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Ops!",
+        text: "Não foi possível enviar a inscrição agora. Por favor, tente novamente ou contacte-nos pelo WhatsApp.",
+        confirmButtonColor: "#2F6FED"
+      });
+    })
+    .finally(() => {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = originalBtnHtml;
+    });
+  });
+</script>
+</body>
+</html>
